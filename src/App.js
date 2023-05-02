@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Form from "./components/Form"
+import Main from "./components/Main"
 
 function App() {
+
+  const [dataFromUser, setDataFromUser] = React.useState({
+    year: -1,
+    month: -1,
+    day: -1,
+    isSubmit: false,
+    isYearWrong: false,
+    isMonthWrong: false,
+    isDayWrong: false,
+    isYearNull: false,
+    isMonthNull: false,
+    isDayNull: false
+  })
+
+  const [ageUser, setAgeUser] = React.useState({
+    year: -1,
+    month: -1,
+    day: -1
+  })
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <Form 
+        setData= {setDataFromUser}
+        getData= {dataFromUser}
+        getAgeUser= {ageUser}
+        setAgeUser= {setAgeUser}
+      />
+      <Main
+        getAgeUser= {ageUser}
+        getData= {dataFromUser}
+      />
     </div>
   );
 }

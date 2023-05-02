@@ -1,38 +1,120 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body{
+  background-color: hsl(0, 0%, 86%);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.container{
+  background-color: white;
+  margin-top: 400px;
+  align-self: center;
+  width: 600px;
+  height: 550px;
+  border-radius: 10px 10px 150px 10px;
+}
+
+.form{
+  display: flex;
+  width: 100%;
+  padding: 20px;
+}
+
+
+.form span.errorMessage{
+  display: block;
+  margin-top: 5px;
+  font-size: 10px;
+  font-weight: 400;
+  color: hsl(0, 100%, 67%);
+  visibility: hidden;
+}
+
+.form h4.active{
+  color: hsl(0, 100%, 67%);
+}
+
+.form input.active{
+  border: 1px solid hsl(0, 100%, 67%);
+}
+
+.form span.active{
+  visibility: visible;
+}
+
+
+.form div{
+  margin-left: 20px;
+  color: hsl(0, 1%, 44%);
+  font-weight: 800;
+}
+
+.form div h4{
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+
+.form div input{
+  height: 30px;
+  width: 100px;
+  padding: 15px;
+  color: hsl(0, 1%, 44%);
+  font-weight: 700;
+  font-size: 25px;
+  border: 1px solid hsl(0, 0%, 86%);
+  border-radius: 10px;
+}
+
+
+.form-submit hr{
+    border: 1px solid hsl(0, 0%, 86%);
+    width: 100%;
+    
+    
+}
+
+.form-submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin-left: 40px;
+}
+
+.form-submit button{
+  display:block;
+  height: 80px;
+  width: 90px;
+  border-radius: 50%;
+  border: 1px solid hsl(259, 100%, 65%);
+  background-color: hsl(259, 100%, 65%);
+  cursor: pointer;
+}
+
+.form-submit button .btn-img{
+  width: 40px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.main-text{
+  margin-left: 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-text h1{
+  margin: 0;
+  font-size: 60px;
+  padding: 0;
+
 }
+
+.main-text h1 span{
+  color: hsl(259, 100%, 65%);
+}
+
+
