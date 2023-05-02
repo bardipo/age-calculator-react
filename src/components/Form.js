@@ -19,8 +19,8 @@ export default function Form(props){
 
     function handleClick(){
         var now = new Date(); 
-        var currentYear = now.getYear();  
-        var currentMonth = now.getMonth();  
+        var currentYear = now.getFullYear();  
+        var currentMonth = now.getMonth()+1;  
         var currentDate = now.getDate();
         if(props.getData.year < 1 || props.getData.month < 1 || props.getData.day < 1 || props.getData.year > now.getFullYear()  || props.getData.month > 12 || props.getData.day > 31){
             props.setData(prev => {
@@ -45,9 +45,6 @@ export default function Form(props){
 
             var dob = new Date(props.getData.year,props.getData.month,props.getData.day);
 
-            var dobYear = dob.getYear();
-            var dobMonth  = dob.getMonth();
-            var dobDate  = dob.getDate();
             let checkYear = parseInt(props.getData.year);
             let checkMonth = parseInt(props.getData.month);
             let checkDay = parseInt(props.getData.day);
@@ -68,9 +65,6 @@ export default function Form(props){
                 }) 
                 return;
             }
-
-
-
             props.setData(prev => {
                 return {
                     ...prev,
@@ -83,49 +77,39 @@ export default function Form(props){
                 }
             })
 
-
-
+            var age = {};
+            let resultDay;
+            let resultMonth;
+            let resultYear;
             
+            var by = Number.parseFloat(props.getData.year),
+                bm = Number.parseFloat(props.getData.month),
+                bd = Number.parseFloat(props.getData.day),
+                ty = Number.parseFloat(currentYear),
+                tm = Number.parseFloat(currentMonth),
+                td = Number.parseFloat(currentDate);
 
-                //get the current date from the system  
+            if (td < bd) {
+                    resultDay = (td - bd + 30);
+                    tm = tm - 1;
+            } else {
+                    resultDay = (td - bd);
+            }
+            
+            if (tm < bm) {
+                    resultMonth = (tm - bm + 12);
+                    ty = ty - 1;
+            } else {
+                    resultMonth = (tm - bm);
+            }
+            
+            resultYear = (ty - by)
+            
              
-            //extract the year, month, and date from current date  
-            
-            
-            //declare a variable to collect the age in year, month, and days  
-            var age = {};  
-            
-            
-            //get years  
-            var yearAge = currentYear - dobYear;  
-            
-            //get months  
-            if (currentMonth >= dobMonth)  
-            //get months when current month is greater  
-            var monthAge = currentMonth - dobMonth;  
-            else {  
-            yearAge--;  
-            monthAge = 12 + currentMonth - dobMonth;  
-            }  
-        
-            //get days  
-            if (currentDate >= dobDate)  
-            //get days when the current date is greater  
-            var dateAge = currentDate - dobDate;  
-            else {  
-            monthAge--;  
-            dateAge = 31 + currentDate - dobDate;  
-        
-            if (monthAge < 0) {  
-                monthAge = 11;  
-                yearAge--;  
-            }  
-            }  
-            //group the age in a single variable  
             age = {  
-            year: yearAge,  
-            month: monthAge,  
-            day: dateAge  
+            year: resultYear,  
+            month: resultMonth,  
+            day: resultDay  
             };
             props.setData(prev => {
                 return {
